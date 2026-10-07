@@ -82,3 +82,5 @@ window.addEventListener('pointermove', (event) => {
   const y = (event.clientY / window.innerHeight - .5) * 18;
   glow.style.transform = `translate(${x}px, ${y}px)`;
 });
+
+clearTimeout(window.__portfolioFallbackTimer);

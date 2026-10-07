@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#0b0a0a">
   <title>张凌森 — AI 内容运营 / 跨境电商运营</title>
   <meta name="description" content="张凌森的个人作品集：AI 内容矩阵运营、跨境社媒增长、直播中控与内容自动化。">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -132,6 +133,15 @@
     </section>
   </main>
   <footer class="footer mono"><a href="#top">张凌森 <span>© 2026</span></a><div><a href="mailto:598850719@qq.com">邮箱</a></div><a href="#top">回到顶部 ↑</a></footer>
-  <script src="script.js"></script>
+  <script>
+    window.__portfolioRelease = () => {
+      document.body.classList.add('loaded');
+      document.querySelectorAll('.reveal').forEach((element) => element.classList.add('visible'));
+    };
+    window.__portfolioFallbackTimer = setTimeout(window.__portfolioRelease, 4000);
+    window.addEventListener('error', window.__portfolioRelease, { once: true });
+    window.addEventListener('unhandledrejection', window.__portfolioRelease, { once: true });
+  </script>
+  <script src="script.js" onerror="window.__portfolioRelease()"></script>
 </body>
 </html>
