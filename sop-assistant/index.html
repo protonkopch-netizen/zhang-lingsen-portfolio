@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1718">
+  <title>制造业 SOP 知识助手 · 产品原型</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">S</span><span>现场知识台<small>SHOPFLOOR KNOWLEDGE</small></span></a>
+    <div class="top-meta"><span class="demo-badge"><i></i> 演示环境</span><span class="user-chip">演示用户 <b>张</b></span></div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="site-select"><span class="site-icon">▦</span><span>宁波示例工厂<small>装配一部 · 模拟空间</small></span><b>⌄</b></div>
+      <div class="side-label">工作台</div>
+      <a class="side-link active" href="#"><span>⌕</span> SOP 智能问答</a>
+      <a class="side-link" href="#knowledge"><span>▤</span> 知识资料 <small>4</small></a>
+      <a class="side-link" href="#feedback"><span>◷</span> 反馈记录</a>
+      <div class="side-divider"></div>
+      <div class="side-label">当前设备</div>
+      <button class="machine-card" id="machineSelect"><span class="machine-icon">⚙</span><span><b>自动贴标机</b><small>LB-02 · 贴标工位</small></span><span class="online"></span></button>
+      <div class="side-foot"><span>●</span> 知识库版本 模拟版 1.0</div>
+    </aside>
+    <main class="main-content">
+      <div class="breadcrumb">工作台 <span>/</span> SOP 智能问答</div>
+      <section class="welcome">
+        <div><div class="eyebrow"><span></span> 生产现场知识助手</div><h1>你好，今天需要<br><em>查找什么作业信息？</em></h1><p>描述设备、工序或异常现象，我会从已整理的作业资料中查找依据。</p></div>
+        <div class="welcome-graphic" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="graphic-core">S<span>OP</span></div><i class="node node-a">✓</i><i class="node node-b">⌕</i><i class="node node-c">▤</i></div>
+      </section>
+      <section class="ask-panel">
+        <label for="question">输入现场问题</label>
+        <div class="input-wrap"><span class="search-icon">⌕</span><input id="question" type="text" placeholder="例如：贴标机标签偏移怎么处理？" autocomplete="off"><button id="askButton">查询依据 <span>↗</span></button></div>
+        <div class="input-hint"><span>↳</span> 可以输入设备名称、报警现象或作业步骤</div>
+      </section>
+      <section class="suggestions" id="suggestions"><div class="section-heading"><div><span class="section-icon">✳</span><h2>常见问题</h2></div><span>基于当前设备资料</span></div><div class="suggestion-grid">
+        <button class="suggestion" data-question="贴标机标签偏移怎么处理"><span class="suggestion-icon amber">↗</span><span><b>标签位置偏移</b><small>质量异常 · 初步排查</small></span><i>↗</i></button>
+        <button class="suggestion" data-question="贴标机开机前需要检查什么"><span class="suggestion-icon blue">◉</span><span><b>开机前检查</b><small>开机准备 · 点检步骤</small></span><i>↗</i></button>
+        <button class="suggestion" data-question="安全门报警怎么处理"><span class="suggestion-icon red">!</span><span><b>安全门报警</b><small>安全异常 · 处置边界</small></span><i>↗</i></button>
+        <button class="suggestion" data-question="传感器怎么清洁点检"><span class="suggestion-icon green">⌁</span><span><b>传感器清洁</b><small>日常点检 · 注意事项</small></span><i>↗</i></button>
+      </div></section>
+      <section class="answer-panel hidden" id="answerPanel" aria-live="polite"></section>
+      <section class="knowledge-strip" id="knowledge"><div class="strip-icon">▤</div><div><b>答案来自受控资料</b><p>每条建议显示资料名称和版本；资料未覆盖的问题会提示补充信息或联系主管。</p></div><a href="#sources">查看资料范围 <span>→</span></a></section>
+      <footer><span>制造业 SOP 知识助手 · 产品 MVP</span><span>所有文档均为模拟演示资料，不用于真实生产操作。</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="assets/knowledge.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

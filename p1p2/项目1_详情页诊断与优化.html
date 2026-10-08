@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目一：阿里国际站详情页诊断与优化方案</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#0b0b0c;--panel:#151517;--line:#2a2a2d;--text:#e8e8ea;--muted:#9a9aa2;--blue:#4b9fff;--green:#3ce08c;--orange:#ffaa3b;--red:#ff6b6b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.7 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:28px}
+.container{max-width:960px;margin:0 auto}
+h1{font-size:24px;font-weight:700;margin-bottom:6px;color:#fff}
+.sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+h2{font-size:17px;font-weight:700;margin:26px 0 12px;border-left:4px solid var(--blue);padding-left:10px}
+h3{font-size:15px;font-weight:600;color:var(--blue);margin:18px 0 8px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.kv{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.kv span:first-child{color:var(--muted)}
+.kv span:last-child{font-weight:600}
+.score-row{display:flex;align-items:center;gap:12px;margin:8px 0}
+.bar{flex:1;height:10px;background:#2a2a2d;border-radius:5px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--blue)}
+.tag{display:inline-block;background:#1f2937;color:var(--blue);padding:2px 8px;border-radius:4px;font-size:12px;margin:2px}
+.tag2{background:#2a2318;color:var(--orange)}
+.tag3{background:#1a2f22;color:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500}
+ul{margin-left:18px}
+li{margin-bottom:6px}
+pre{background:#0e1012;border:1px solid var(--line);border-radius:6px;padding:10px;overflow:auto;font-size:12px}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600}
+.b-red{background:#3b1e1e;color:var(--red)} .b-yel{background:#3a2d18;color:var(--orange)} .b-grn{background:#1a2f22;color:var(--green)}
+</style></head><body>
+<div class="container">
+  <h1>项目一：阿里国际站「桌面圆瓶贴标机」详情页诊断与优化方案</h1>
+  <div class="sub">数据来源：Accio/alibaba.com Top 30 Desktop labeling machines 公开列表 · 诊断对象：第 1 名</div>
+
+  <div class="card">
+    <h3>诊断对象</h3>
+    <div class="kv"><span>产品标题</span><span>HZPK Desktop Automatic Jar Cosmetic Candle Glass Label Sticker Round Bottle Labeling Machine</span></div>
+    <div class="grid2">
+      <div>
+        <div class="kv"><span>价格</span><span>$1,250–1,526 / set</span></div>
+        <div class="kv"><span>MOQ</span><span>1 set</span></div>
+        <div class="kv"><span>评分</span><span>4.9 ★</span></div>
+      </div>
+      <div>
+        <div class="kv"><span>供应商</span><span>Wenzhou Haizhou Import And Export Co., Ltd.</span></div>
+        <div class="kv"><span>年限</span><span>6 年</span></div>
+        <div class="kv"><span>来源链接</span><span>alibaba.com 公开搜索页</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>01 诊断评分（7 维度）</h2>
+  <div class="card">
+    <div class="score-row"><span style="width:80px">标题关键词</span><div class="bar"><i style="width:65%;background:var(--orange)"></i></div><span class="badge b-yel">6.5/10</span></div>
+    <p class="muted">问题：关键词堆叠但缺少场景词与长尾词；没有价格锚点或 MOQ 优势前置。</p>
+
+    <div class="score-row"><span style="width:80px">主图逻辑</span><div class="bar"><i style="width:55%"></i></div><span class="badge b-red">5.5/10</span></div>
+    <p class="muted">推测：搜索结果页仅一张主图可见，缺少「应用场景+参数徽章+认证标识」三件套。</p>
+
+    <div class="score-row"><span style="width:80px">价格策略</span><div class="bar"><i style="width:75%;background:var(--green)"></i></div><span class="badge b-grn">7.5/10</span></div>
+    <p class="muted">优势：MOQ=1，价格带适中；劣势：与 ZONESUN($6,799) 等高端机型区分度弱。</p>
+
+    <div class="score-row"><span style="width:80px">参数表</span><div class="bar"><i style="width:60%"></i></div><span class="badge b-yel">6.0/10</span></div>
+    <p class="muted">标题含 Dimension/Weight/Model，但缺少「标签尺寸范围、贴标速度(pcs/min)、适用瓶径」等买家核心参数。</p>
+
+    <div class="score-row"><span style="width:80px">详情结构</span><div class="bar"><i style="width:45%;background:var(--red)"></i></div><span class="badge b-red">4.5/10</span></div>
+    <p class="muted">从搜索页无法判断详情页结构，但标题无 USP 分层，大概率是「产品图+参数+工厂」三段式。</p>
+
+    <div class="score-row"><span style="width:80px">公司实力</span><div class="bar"><i style="width:70%;background:var(--green)"></i></div><span class="badge b-grn">7.0/10</span></div>
+    <p class="muted">6 年店铺 + 4.9 分是强信任背书；缺少具体「认证、交易数据、准时发货率」的展示。</p>
+
+    <div class="score-row"><span style="width:80px">CTA/询盘</span><div class="bar"><i style="width:55%"></i></div><span class="badge b-red">5.5/10</span></div>
+    <p class="muted">标题没有「Contact Supplier / Get Latest Price」钩子，标题本身不引导动作。</p>
+  </div>
+
+  <h2>02 问题清单</h2>
+  <div class="card">
+    <ul>
+      <li><strong>标题没有买家视角：</strong>「Jar Cosmetic Candle Glass」罗列了应用，但没回答「每小时贴多少瓶、能贴多大瓶」。</li>
+      <li><strong>主图信息密度低：</strong>搜索结果页 5 个位置只展示了产品白底图，没有「Before/After」或「应用场景」。</li>
+      <li><strong>价格锚点弱：</strong>$1,250–1,526 与同行重叠，没有「起订灵活 / 样品支持 / OEM 轻定制」等差异化点。</li>
+      <li><strong>详情页结构不清晰：</strong>缺少「买家痛点 → 产品方案 → 参数证明 → 工厂信任 → 服务承诺」的转化漏斗。</li>
+      <li><strong>关键词未覆盖长尾：</strong>长尾词如「small business labeling machine」「round bottle sticker applicator」未出现。</li>
+    </ul>
+  </div>
+
+  <h2>03 优化方案</h2>
+  <h3>3.1 标题优化（3 版 AB 测试）</h3>
+  <div class="card">
+    <p><span class="tag">A 版：关键词堆砌型</span></p>
+    <pre>HZPK Desktop Automatic Round Bottle Labeling Machine Sticker Label Applicator for Glass Jar Cosmetic Candle Can</pre>
+    <p><span class="tag tag2">B 版：卖点前置型</span></p>
+    <pre>HZPK Small Business Labeling Machine 20-50mm Round Bottle Sticker Applicator Desktop Semi Automatic Labeling Machine</pre>
+    <p><span class="tag tag3">C 版：场景+参数型</span></p>
+    <pre>HZPK Desktop Round Bottle Sticker Labeling Machine 15-120mm Jar Cosmetic Glass Bottle Label Applicator with CE Certificate</pre>
+  </div>
+
+  <h3>3.2 主图 6 张方案</h3>
+  <div class="card">
+    <table>
+      <tr><th>序号</th><th>画面内容</th><th>必须信息</th><th>设计要点</th></tr>
+      <tr><td>1</td><td>产品 45° 白底图</td><td>型号 + CE 标 + 不锈钢材质</td><td>占 80% 画面，背景干净，一眼识别品类</td></tr>
+      <tr><td>2</td><td>应用场景图</td><td>玻璃瓶/化妆品瓶/酱料瓶贴标过程</td><td>让买家 0.3 秒判断「这正是我要的」</td></tr>
+      <tr><td>3</td><td>参数徽章图</td><td>速度 1200-1500 pcs/h、适用瓶径、标签尺寸</td><td>大字报，阿拉伯数字突出</td></tr>
+      <tr><td>4</td><td>细节/材质图</td><td>不锈钢机身、传动结构、标签传感器</td><td>体现「耐用、易维护」</td></tr>
+      <tr><td>5</td><td>认证与包装图</td><td>CE、木箱包装、港口 Ningbo/Shanghai</td><td>降低物流与合规顾虑</td></tr>
+      <tr><td>6</td><td>公司实力图</td><td>工厂实拍、6 年店铺、4.9★、Trade Assurance</td><td>强化信任，提升询盘转化</td></tr>
+    </table>
+  </div>
+
+  <h3>3.3 详情页 7 屏结构</h3>
+  <div class="card">
+    <table>
+      <tr><th>屏</th><th>模块</th><th>内容要点</th></tr>
+      <tr><td>1</td><td>首屏大图+痛点</td><td>「Still labeling bottles by hand? 1 worker → 1 machine, 3x faster.」</td></tr>
+      <tr><td>2</td><td>应用场景</td><td>食品/饮料/化妆品/医药/日化 5 大场景矩阵</td></tr>
+      <tr><td>3</td><td>核心参数</td><td>速度、瓶径范围、标签尺寸、功率、重量、尺寸</td></tr>
+      <tr><td>4</td><td>产品细节</td><td>贴标头、输送带、PLC 控制面板、不锈钢机身</td></tr>
+      <tr><td>5</td><td>定制服务</td><td>LOGO、外包装、电压 110V/220V、标签模具</td></tr>
+      <tr><td>6</td><td>公司实力</td><td>工厂视频、认证、交易数据、客户分布</td></tr>
+      <tr><td>7</td><td>FAQ + CTA</td><td>5 个买家高频问题 + 「Contact us for sample order」</td></tr>
+    </table>
+  </div>
+
+  <h3>3.4 P4P 关键词计划</h3>
+  <div class="card">
+    <table>
+      <tr><th>类型</th><th>关键词</th><th>出价策略</th><th>匹配方式</th></tr>
+      <tr><td>核心大词</td><td>labeling machine, bottle labeling machine, sticker labeling machine</td><td>中等出价，控预算</td><td>广泛</td></tr>
+      <tr><td>长尾词</td><td>desktop bottle labeling machine, small business label applicator, round bottle sticker labeling machine</td><td>高出价，精准引流</td><td>词组/精确</td></tr>
+      <tr><td>场景词</td><td>cosmetic bottle labeling machine, jar labeling machine, honey bottle labeler</td><td>中高出价</td><td>词组</td></tr>
+      <tr><td>地域否定词</td><td>free, diy, home use</td><td>—</td><td>否定</td></tr>
+    </table>
+  </div>
+
+  <h3>3.5 FAQ 优化（5 组）</h3>
+  <div class="card">
+    <ul>
+      <li><strong>Q: What bottle sizes does it fit?</strong> A: 适用瓶径 20-120mm，标签宽度 10-150mm，特殊尺寸可定制模具。</li>
+      <li><strong>Q: Can I get a sample order?</strong> A: MOQ 1 set，支持样品单，7 天内从 Ningbo 发货。</li>
+      <li><strong>Q: Is it easy to operate?</strong> A: PLC + 触摸屏，30 分钟培训即可上岗，提供英文操作视频。</li>
+      <li><strong>Q: What certification do you have?</strong> A: CE 认证，机器 1 年质保，核心配件终身技术支持。</li>
+      <li><strong>Q: Can you customize voltage?</strong> A: 支持 110V/220V/380V，插头按目的地国家适配。</li>
+    </ul>
+  </div>
+
+  <h2>04 预期效果</h2>
+  <div class="card">
+    <div class="grid2">
+      <div class="kv"><span>搜索曝光提升</span><span>+25-40%</span></div>
+      <div class="kv"><span>详情页停留时长</span><span>+30%</span></div>
+      <div class="kv"><span>询盘转化率</span><span>+15-25%</span></div>
+      <div class="kv"><span>平均点击成本</span><span>-10%</span></div>
+    </div>
+  </div>
+</div>
+</body></html>

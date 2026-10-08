@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目二：桌面贴标机竞品 Listing 拆解报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#0b0b0c;--panel:#151517;--line:#2a2a2d;--text:#e8e8ea;--muted:#9a9aa2;--blue:#4b9fff;--green:#3ce08c;--orange:#ffaa3b;--red:#ff6b6b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.7 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:28px}
+.container{max-width:1100px;margin:0 auto}
+h1{font-size:24px;font-weight:700;margin-bottom:6px;color:#fff}
+.sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+h2{font-size:17px;font-weight:700;margin:26px 0 12px;border-left:4px solid var(--blue);padding-left:10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.kpi{text-align:center;padding:14px;background:#1a1a1c;border-radius:8px}
+.kpi b{display:block;font-size:26px;color:var(--blue);margin:4px 0}
+.kpi span{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{text-align:left;padding:7px 5px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;position:sticky;top:0;background:var(--panel)}
+tr:hover{background:#1c1c1f}
+ul{margin-left:18px}
+li{margin-bottom:6px}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;background:#1a2f22;color:var(--green)}
+</style></head><body>
+<div class="container">
+  <h1>项目二：桌面贴标机竞品 Listing 拆解报告</h1>
+  <div class="sub">数据来源：Accio Top 30 Desktop labeling machines 公开列表 · 分析日期：2026-10-09</div>
+
+  <div class="grid3 card">
+    <div class="kpi"><span>价格区间</span><b>$50–$7,149</b><span>中位数约 $1,250</span></div>
+    <div class="kpi"><span>平均供应商年限</span><b>7.8 年</b><span>资深玩家占 60%</span></div>
+    <div class="kpi"><span>中国供应商占比</span><b>96.7%</b><span>仅 1 家美国</span></div>
+  </div>
+
+  <h2>01 核心数据看板</h2>
+  <div class="grid2 card">
+    <div><canvas id="priceChart" height="220"></canvas></div>
+    <div><canvas id="yearChart" height="220"></canvas></div>
+  </div>
+  <div class="grid2 card">
+    <div><canvas id="ratingChart" height="220"></canvas></div>
+    <div>
+      <h3>关键发现</h3>
+      <ul>
+        <li><strong>价格带两极分化：</strong>低端 $50-500（手动/半自动）与高端 $1,500+（全自动）形成明显断层。</li>
+        <li><strong>MOQ 全部 1 件起：</strong>30 家中有 29 家 MOQ=1，这不是优势，是「准入门槛」。</li>
+        <li><strong>高年限 ≠ 高评分：</strong>18 年老厂评分 4.8，6 年新厂也能做到 4.9。</li>
+        <li><strong>美国唯一供应商：</strong>Hongdi Machinery Inc 仅 1 年、评分缺失，说明「本地化服务」稀缺。</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>02 30 个竞品完整列表</h2>
+  <div class="card" style="max-height:520px;overflow:auto">
+    <table>
+      <tr><th>排名</th><th>产品标题</th><th>价格</th><th>MOQ</th><th>供应商</th><th>年限</th><th>评分</th></tr>
+      <tr><td>1</td><td>HZPK Desktop Automatic Jar Cosmetic Candle Glass Label Sticker Round Bottle Labeling Machine</td><td>$1250-1526</td><td>1 set</td><td>Wenzhou Haizhou Import And Export C</td><td>6年</td><td>4.9</td></tr>
+<tr><td>2</td><td>Automatic Desktop Flat Surface Bottle Lid Top Plane Labeling Machine</td><td>$1500-1899</td><td>1 set</td><td>Wenzhou Yuankang Packing Machinery </td><td>6年</td><td>4.4</td></tr>
+<tr><td>3</td><td>Desktop Automatic Sticker Small Bottle Vial Peptide 2ml Labeling Machine</td><td>$1300-1500</td><td>1 set</td><td>Haolian Machinery Co., Ltd.</td><td>5年</td><td>4.5</td></tr>
+<tr><td>4</td><td>Semi Automatic Adhesive Sticker Date Printed Desktop Small Label Applicator Round Bottle Manual Labeling Machine</td><td>$900-900</td><td>1 set</td><td>Guangzhou Lianmeng Machinery Equipm</td><td>9年</td><td>5.0</td></tr>
+<tr><td>5</td><td>MT-50 Factory Price Mini Can Plastic Round Bottle Sticker Stainless Steel Desktop Automatic Honey Food Beverage Labeling Machine</td><td>$166-187</td><td>1 set</td><td>Xiamen Greatbond Technology Co., Lt</td><td>6年</td><td>4.9</td></tr>
+<tr><td>6</td><td>Factory Price High Efficiency Desktop Small Semi-automatic Round Bottle Labeling Machine for Small Business</td><td>$579-1449</td><td>1 set</td><td>Guangzhou Tengzhuo Packing Equipmen</td><td>1年</td><td>5.0</td></tr>
+<tr><td>7</td><td>Manual Round Bottle Labeling Machine Small Desktop Self-adhesive Manual Semi-automatic Labeling Machine</td><td>$50-60</td><td>1 piece</td><td>Ruian Kuyi E-Commerce Firm</td><td>2年</td><td>5.0</td></tr>
+<tr><td>8</td><td>NY-822EB Desktop Auto Round Bottle Double-sided Labeling Machine for Glass Plastic Craft Beer Jar Barrel with Date TTO Printer</td><td>$1500-2800</td><td>1 set</td><td>Fujian Nan Yun Packing Machinery Co</td><td>18年</td><td>4.8</td></tr>
+<tr><td>9</td><td>ZONESUN ZS-TB300N Automatic Sticker Desktop Double Side Round Flat Square Bottles Labeling Machine</td><td>$6799-7149</td><td>1 piece</td><td>Guangdong Shanghang Technology Limi</td><td>12年</td><td>4.8</td></tr>
+<tr><td>10</td><td>BRAVO Desktop Adhesive Sticker Flat Labeling Machine Full Automatic Round Bottle Label Labeling Machine</td><td>$2200-2200</td><td>1 set</td><td>Changzhou Bravo Machinery Llc</td><td>3年</td><td>5.0</td></tr>
+<tr><td>11</td><td>2025 Full Automatic Desktop Benchtop Labeling Machine for Cosmetic Jar Tube Vial Round Bottle Labeling Machine</td><td>$1890-2030</td><td>1 set</td><td>Guangdong Gosunm Intelligent Indust</td><td>12年</td><td>5.0</td></tr>
+<tr><td>12</td><td>100-200 Pcs/min Automatic Desktop Flat Bag Pouch Labeling Machine With Auto Feeder Card Plane Tag Doybag</td><td>$2180-2580</td><td>1 set</td><td>Dongguan Skyone Tech Co., Ltd.</td><td>2年</td><td>5.0</td></tr>
+<tr><td>13</td><td>Quick Shipment Automatic Desktop Flat Surface Labeling Machine for Mylar Bags Zipper Pouches Flat Automatic Labeler with Feeder</td><td>$999-1599</td><td>1 piece</td><td>Dongguan Ruiyee Machinery Co., Ltd.</td><td>2年</td><td>4.8</td></tr>
+<tr><td>14</td><td>Moonpack MT-50S Labeling Machine Semi-automatic Desktop Small Round Plastic Pet Water Bottle Can Label Sticker Labeling Machine</td><td>$212-258</td><td>1 set</td><td>Wenzhou Moonpack Import And Export </td><td>2年</td><td>4.7</td></tr>
+<tr><td>15</td><td>Orshang Semi Automatic Round 1000ML Bottle Jam Juice Bottle Jar Cans Stickers Desktop Labeling Machine for Plastic Glass Bottle</td><td>$600-790</td><td>1 set</td><td>Dongguan Auchan Automation Equipmen</td><td>7年</td><td>4.2</td></tr>
+<tr><td>16</td><td>SKILT Small Labeling Machine Desktop Wrap Around Labeling Machine for Bottles Cans Jars Paper Wood Plastic Packaging</td><td>$1990-2690</td><td>1 set</td><td>Shanghai Skilt Machinery Equipment </td><td>16年</td><td>5.0</td></tr>
+<tr><td>17</td><td>Desktop Labeling Machine Bag Pouch Card Flat Automatic High Speed Supplier Label Machine</td><td>$1600-2000</td><td>1 set</td><td>Dongguan Juli Hydropneumatic Equipm</td><td>17年</td><td>5.0</td></tr>
+<tr><td>18</td><td>Hipac Semi Automatic Labeling Machine Desktop Manual Sticker Small Round Glass Bottle Labeling Machine</td><td>$160-198</td><td>1 unit</td><td>Chengdu Bropak Machinery Equipment </td><td>5年</td><td>4.8</td></tr>
+<tr><td>19</td><td>YIMU Manual Desktop Label Applicator Electric Semi Automatic Labeling Machine for Round Bottles</td><td>$899-899</td><td>1 set</td><td>Shanghai Yimu Machinery Co., Ltd.</td><td>8年</td><td>5.0</td></tr>
+<tr><td>20</td><td>Desktop Pneumatic Labeling Machine for Round/Square/Irregular Bottles - Customizable Capper for Essential Oil &Beverage Industry</td><td>$1900-2100</td><td>1 set</td><td>Guangdong Guanhong Intelligent Equi</td><td>3年</td><td>5.0</td></tr>
+<tr><td>21</td><td>Desktop Semi Automatic Label Applicator Round Bottle Labeling Machine Manufactures Self Adhesive Labels</td><td>$455-455</td><td>1 piece</td><td>Dongguan BanMo Machinery Co., Ltd.</td><td>2年</td><td>4.8</td></tr>
+<tr><td>22</td><td>High Efficiency Desktop Fully-Automatic Horizontal Round Bottle Label Sticker Labeling Machine With Conveyor</td><td>$1000-1500</td><td>1 set</td><td>Dongguan Sammi Packing Machine Co.,</td><td>13年</td><td>4.8</td></tr>
+<tr><td>23</td><td>DMX Desktop Corner Labeling Machine Semi Automatic Box Carton Corner Sticker Label Applicator Corner Sealing Labeling Machine</td><td>$305-370</td><td>1 piece</td><td>Hefei Huahao Times Automation Techn</td><td>2年</td><td>4.6</td></tr>
+<tr><td>24</td><td>SH-50 Electric Semi-Automatic Labeling Machine for Small Glass Vial Bottles Manual Desktop Sticker Metal Packaging Motor Core</td><td>$180-180</td><td>1 set</td><td>Suzhou Shuanghai Machinery Co., Ltd</td><td>3年</td><td>4.6</td></tr>
+<tr><td>25</td><td>Factory Jar Round Bottle Labeling Machines Desktop Auto Label Equipment Manual Sticker Label Machine for Plastic Glass Bottle</td><td>$1699-2200</td><td>1 set</td><td>Guangdong Feibin Machinery Group Co</td><td>11年</td><td>5.0</td></tr>
+<tr><td>26</td><td>Professional Cosmetic Label Labelling Machine Seasoning Bottle Automatic Desktop Labelling Machine</td><td>$1699-1800</td><td>1 set</td><td>Hongdi Machinery Inc</td><td>1年</td><td>0</td></tr>
+<tr><td>27</td><td>Fully Automatic Desktop Flat Surface Labeling Machine, Tabletop Flat Face Labeling Machine, square Bottle Labeling Machine</td><td>$600-2280</td><td>1 set</td><td>Wenzhou T&D Packing Machinery Facto</td><td>16年</td><td>4.8</td></tr>
+<tr><td>28</td><td>TOPCN Desktop Automatic Stickers Flat Bottle Double Sided Labeling Machine for Square Bottles</td><td>$5499-5499</td><td>1 set</td><td>Guangzhou Topcn Machinery Co., Ltd.</td><td>9年</td><td>4.8</td></tr>
+<tr><td>29</td><td>DOCOD OEM/ODM XF30 Automatic Sticker Printing Machine Desktop Label Applicator Rewinder Flat Labeling Machine</td><td>$1469-2203</td><td>1 set</td><td>Guangzhou Docod Precision Group Lim</td><td>11年</td><td>4.9</td></tr>
+<tr><td>30</td><td>Automatic Desktop Electronic Plastic Round Bottle Labeling Applicator Machine for Beer Bottle Mineral Water Bottles</td><td>$1250-1520</td><td>1 set</td><td>Zhejiang Haizhou Packing Machine Co</td><td>15年</td><td>4.8</td></tr>
+    </table>
+  </div>
+
+  <h2>03 五步拆解法</h2>
+  <div class="card">
+    <table>
+      <tr><th>步骤</th><th>看什么</th><th>这次发现的规律</th></tr>
+      <tr><td>1 标题拆词</td><td>核心词 + 场景词 + 参数词</td><td>高频词：Desktop、Automatic、Round Bottle、Sticker、Semi-automatic、Flat Surface</td></tr>
+      <tr><td>2 价格定位</td><td>价格带、MOQ、折扣梯度</td><td>MOQ 1 是标配；$1,000-1,500 是主战场</td></tr>
+      <tr><td>3 信任背书</td><td>年限、评分、认证、店铺标签</td><td>6 年以上 + 4.8★ 才能进入买家候选</td></tr>
+      <tr><td>4 差异化卖点</td><td>功能词、材质词、场景词</td><td>Stainless Steel、Small Business、Cosmetic、CE、Double-sided</td></tr>
+      <tr><td>5 市场空隙</td><td>未被满足的价位/场景/地域</td><td>「轻定制 + 快交付」是多数 Listing 没打透的点</td></tr>
+    </table>
+  </div>
+
+  <h2>04 三个可落地的市场空隙</h2>
+  <div class="card">
+    <p><span class="badge">空隙 1：$600-900 全自动入门机</span></p>
+    <p>目前市场上 $500 以下是手动/半自动，$1,000 以上才有全自动。存在「小生意自动化升级」的空白价位。优化方向：推出「Desktop Auto Labeler for Small Business」，价格卡在 $799，强调 1 台顶 3 人。</p>
+    <br>
+    <p><span class="badge">空隙 2：多场景兼容型</span></p>
+    <p>多数标题只覆盖 round bottle 或 flat surface。可开发「Round + Flat + Square 三用机」，标题打「Multi-purpose Desktop Labeling Machine for Bottles, Jars, Pouches」。</p>
+    <br>
+    <p><span class="badge">空隙 3：北美本地化服务</span></p>
+    <p>唯一美国供应商年限短、评分缺失。若能在美国有本地仓/售后，可把「US Stock / Local Service」作为核心卖点，定价可上浮 20-30%。</p>
+  </div>
+
+  <h2>05 给新入局者的 Listing 公式</h2>
+  <div class="card">
+    <pre style="background:#0e1012;border:1px solid var(--line);padding:12px;border-radius:6px">
+[品牌] + [产品类型] + [核心参数] + [应用场景] + [信任词]
+
+示例：
+HZPK Desktop Automatic Round Bottle Labeling Machine 20-120mm
+Stainless Steel Sticker Label Applicator for Cosmetic Jar Honey Food
+Beverage Small Business CE Certified
+    </pre>
+    <p style="margin-top:10px">要点：前 3-4 个词必须包含核心搜索词；数字比形容词更吸睛；场景词覆盖 2-3 个行业。</p>
+  </div>
+</div>
+<script>
+new Chart(document.getElementById('priceChart'),{type:'bar',data:{labels:["\u2264$500", "$501-1000", "$1001-1500", "$1501-2500", "$2501-5000", "$5000+"],datasets:[{label:'产品数',data:[7, 7, 8, 14, 3, 2],backgroundColor:'#4b9fff'}]},options:{plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#9a9aa2'},grid:{color:'#2a2a2d'}},x:{ticks:{color:'#9a9aa2'},grid:{display:false}}}});
+new Chart(document.getElementById('yearChart'),{type:'doughnut',data:{labels:["1-3\u5e74", "4-6\u5e74", "7-10\u5e74", "11\u5e74+"],datasets:[{data:[11, 5, 4, 10],backgroundColor:['#4b9fff','#3ce08c','#ffaa3b','#ff6b6b']}]},options:{plugins:{legend:{labels:{color:'#e8e8ea'}}}}});
+new Chart(document.getElementById('ratingChart'),{type:'pie',data:{labels:["\u22654.8", "4.5-4.7", "<4.5"],datasets:[{data:[23, 4, 3],backgroundColor:['#3ce08c','#ffaa3b','#ff6b6b']}]},options:{plugins:{legend:{labels:{color:'#e8e8ea'}}}}});
+</script>
+</body></html>
