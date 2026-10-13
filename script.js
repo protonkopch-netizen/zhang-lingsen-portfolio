@@ -1,21 +1,3 @@
-const body = document.body;
-body.classList.add('js');
-
-// 兜底：脚本异常或加载卡住时强制移除遮罩，避免整页被 loader 挡死
-window.addEventListener('error', () => body.classList.add('loaded'));
-setTimeout(() => body.classList.add('loaded'), 4000);
-
-const loader = document.querySelector('.loader b');
-let count = 0;
-const counter = setInterval(() => {
-  count = Math.min(100, count + Math.ceil(Math.random() * 17));
-  loader.textContent = String(count).padStart(2, '0');
-  if (count >= 100) {
-    clearInterval(counter);
-    setTimeout(() => body.classList.add('loaded'), 280);
-  }
-}, 65);
-
 const cursor = document.querySelector('.cursor');
 window.addEventListener('pointermove', (event) => {
   cursor.style.left = `${event.clientX}px`;
@@ -83,4 +65,3 @@ window.addEventListener('pointermove', (event) => {
   glow.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-clearTimeout(window.__portfolioFallbackTimer);
